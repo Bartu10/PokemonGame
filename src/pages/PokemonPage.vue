@@ -2,6 +2,7 @@
     <h1 v-if="!pokemon">Espere por favor...</h1>
 
     <div v-else>
+        <h2>Puntuacion: {{this.puntuacion}}</h2>
         <h1>¿Quién es este pokémon?</h1>
         
         <PokemonPicture 
@@ -16,9 +17,7 @@
 
         <template v-if="showAnswer">
             <h2 class="fade-in">{{ message }}</h2>
-            <button @click="newGame">
-                Nuevo Juego
-            </button>
+            {{ setTimeout(newGame(),5) }}
         </template>
 
     </div>
@@ -36,6 +35,7 @@ export default {
     components: { PokemonOptions, PokemonPicture },
     data() {
         return {
+            puntuacion: 0,
             pokemonArr: [],
             pokemon: null,
             showPokemon: false,
@@ -56,12 +56,14 @@ export default {
 
             if( selectedId === this.pokemon.id ) {
                 this.message = `Correcto, ${ this.pokemon.name }`
+                this.puntuacion += 1
             } else {
                 this.message = `Oops, era ${ this.pokemon.name }`
+                this.puntuacion = 0
             }
         },
         newGame() {
-
+            
             this.showPokemon = false
             this.showAnswer  = false
             this.pokemonArr  = []
