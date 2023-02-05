@@ -3,8 +3,7 @@
 
     <div v-else>
         
-        <div>
-            <h2 >Vidas:</h2>
+        <div style="padding-right: 3%; text-align: right;">
             <img v-for="n in this.vidas" v-bind:key="n" style="width:20px" src="../assets/kisspng-love-heart-love-heart-romance-clip-art-picture-of-red-heart-5aaeb718420cb8.8640685015213995762706.png" />
         </div>
         <h1>Puntuacion: {{this.puntuacion}}</h1>
